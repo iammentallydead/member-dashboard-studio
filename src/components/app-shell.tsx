@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { BookOpen, Flame, LayoutGrid, MessageSquare, Repeat, Search, Settings, Type, Users } from "lucide-react";
 
 const nav = [
@@ -58,6 +59,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             placeholder="Search words, quotes, notes…"
             className="min-h-11 w-full bg-transparent font-mono text-sm outline-none placeholder:text-muted-foreground"
           />
+          <ThemeToggle />
         </header>
         <main id="main" className="mx-auto max-w-6xl px-6 py-10 md:px-10">{children}</main>
       </div>

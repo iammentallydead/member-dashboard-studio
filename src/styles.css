@@ -49,6 +49,22 @@
   --shadow-sticker-sm: 2px 2px 0 0 var(--foreground);
 }
 
+.dark {
+  --background: oklch(0.18 0.012 60);
+  --paper-2: oklch(0.22 0.014 60);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.23 0.014 60);
+  --card-foreground: oklch(0.95 0.012 85);
+  --highlight-foreground: oklch(0.15 0.012 60);
+  --primary: oklch(0.95 0.012 85);
+  --primary-foreground: oklch(0.18 0.012 60);
+  --muted: oklch(0.27 0.014 60);
+  --muted-foreground: oklch(0.72 0.02 80);
+  --border: oklch(0.95 0.012 85);
+  --rule: oklch(0.32 0.015 60);
+  --ring: oklch(0.95 0.012 85);
+}
+
 @layer base {
   * { border-color: var(--color-rule); }
   body {
