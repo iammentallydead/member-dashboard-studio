@@ -20,8 +20,8 @@ export const Route = createFileRoute("/review")({
 function Review() {
   const [i, setI] = useState(0);
   const [shown, setShown] = useState(false);
-  const done = i >= reviewCards.length;
   const c = reviewCards[i];
+  const done = !c;
   const next = () => { setShown(false); setI(i + 1); };
 
   return (
@@ -29,7 +29,7 @@ function Review() {
       <PageTitle kicker={done ? "Review complete" : `Card ${i + 1} of ${reviewCards.length}`}>
         {done ? <>That's today. <span className="marker">See you tomorrow.</span></> : "Do you remember this?"}
       </PageTitle>
-      {done ? (
+      {!c ? (
         <Link to="/" className="kicker inline-flex min-h-11 items-center sticker-sm bg-highlight px-5 text-highlight-foreground">Back to today</Link>
       ) : (
         <div className="max-w-2xl">
