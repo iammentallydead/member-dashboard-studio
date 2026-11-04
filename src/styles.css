@@ -54,28 +54,32 @@
   --surface-rule: oklch(0.85 0.02 80);
 }
 
-/* Dark: pitch black page, cards in a light palette drawn from #0297de */
+/* Dark: pitch black page; cards are a whisper of #0297de, accents stay brand blue */
 .dark {
   --background: oklch(0 0 0);
-  --paper-2: oklch(0.9 0.05 240.3);
-  --foreground: oklch(0.95 0.02 240.3);
-  --card: oklch(0.955 0.025 240.3);
-  --card-foreground: oklch(0.25 0.05 240.3);
+  --paper-2: oklch(0.16 0.03 240.3);
+  --foreground: oklch(0.95 0.012 240.3);
+  --card: oklch(0.96 0.012 240.3);
+  --card-foreground: oklch(0.25 0.03 240.3);
   --highlight: oklch(0.6454 0.1481 240.27);
-  --highlight-foreground: oklch(0.25 0.05 240.3);
-  --primary: oklch(0.8 0.11 240.3);
-  --primary-foreground: oklch(0.25 0.05 240.3);
-  --muted: oklch(0.85 0.07 240.3);
-  --muted-foreground: oklch(0.75 0.06 240.3);
+  --highlight-foreground: oklch(0.25 0.03 240.3);
+  --primary: oklch(0.9 0.045 240.3);
+  --primary-foreground: oklch(0.25 0.03 240.3);
+  --muted: oklch(0.88 0.03 240.3);
+  --muted-foreground: oklch(0.72 0.035 240.3);
   --destructive: oklch(0.63 0.19 25);
-  --border: oklch(0.55 0.09 240.3);
-  --rule: oklch(0.35 0.06 240.3);
+  --border: oklch(0.5 0.05 240.3);
+  --rule: oklch(0.3 0.035 240.3);
   --ring: oklch(0.75 0.14 240.3);
-  --shadow-color: oklch(0.6454 0.1481 240.27);
-  --surface-foreground: oklch(0.25 0.05 240.3);
-  --surface-muted-foreground: oklch(0.45 0.07 240.3);
-  --surface-border: oklch(0.3 0.06 240.3);
-  --surface-rule: oklch(0.82 0.04 240.3);
+  --shadow-color: oklch(0.42 0.075 240.3);
+  --surface-foreground: oklch(0.25 0.03 240.3);
+  --surface-muted-foreground: oklch(0.45 0.05 240.3);
+  --surface-border: oklch(0.3 0.04 240.3);
+  --surface-rule: oklch(0.82 0.02 240.3);
+  --on-dark-foreground: oklch(0.95 0.012 240.3);
+  --on-dark-muted-foreground: oklch(0.72 0.035 240.3);
+  --on-dark-border: oklch(0.5 0.05 240.3);
+  --on-dark-rule: oklch(0.3 0.035 240.3);
 }
 
 @layer base {
@@ -87,12 +91,20 @@
   }
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
   /* Light-blue surfaces carry dark ink text; the black page keeps pale text. */
-  .dark :is(.sticker, .sticker-sm, .bg-card, .bg-paper-2, .bg-muted, .bg-primary) {
+  .dark :is(.sticker, .sticker-sm, .bg-card, .bg-muted, .bg-primary) {
     color: var(--surface-foreground);
     --foreground: var(--surface-foreground);
     --muted-foreground: var(--surface-muted-foreground);
     --border: var(--surface-border);
     --rule: var(--surface-rule);
+  }
+  /* Near-black panels sit with the page, so their text stays pale. */
+  .dark .bg-paper-2 {
+    color: var(--on-dark-foreground);
+    --foreground: var(--on-dark-foreground);
+    --muted-foreground: var(--on-dark-muted-foreground);
+    --border: var(--on-dark-border);
+    --rule: var(--on-dark-rule);
   }
 }
 
