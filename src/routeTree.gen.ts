@@ -10,12 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AskRouteImport } from './routes/ask'
+import { Route as ClassRouteImport } from './routes/class'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as ReviewRouteImport } from './routes/review'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as VocabularyRouteImport } from './routes/vocabulary'
+import { Route as LibraryBookIdRouteImport } from './routes/library_.$bookId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AskRoute = AskRouteImport.update({
+  id: '/ask',
+  path: '/ask',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassRoute = ClassRouteImport.update({
+  id: '/class',
+  path: '/class',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryRoute = LibraryRouteImport.update({
@@ -28,35 +43,95 @@ const ReviewRoute = ReviewRouteImport.update({
   path: '/review',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VocabularyRoute = VocabularyRouteImport.update({
+  id: '/vocabulary',
+  path: '/vocabulary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryBookIdRoute = LibraryBookIdRouteImport.update({
+  id: '/library_/$bookId',
+  path: '/library/$bookId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ask': typeof AskRoute
+  '/class': typeof ClassRoute
   '/library': typeof LibraryRoute
   '/review': typeof ReviewRoute
+  '/settings': typeof SettingsRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/library/$bookId': typeof LibraryBookIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ask': typeof AskRoute
+  '/class': typeof ClassRoute
   '/library': typeof LibraryRoute
   '/review': typeof ReviewRoute
+  '/settings': typeof SettingsRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/library/$bookId': typeof LibraryBookIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ask': typeof AskRoute
+  '/class': typeof ClassRoute
   '/library': typeof LibraryRoute
   '/review': typeof ReviewRoute
+  '/settings': typeof SettingsRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/library_/$bookId': typeof LibraryBookIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/library' | '/review'
+  fullPaths:
+    | '/'
+    | '/ask'
+    | '/class'
+    | '/library'
+    | '/review'
+    | '/settings'
+    | '/vocabulary'
+    | '/library/$bookId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/library' | '/review'
-  id: '__root__' | '/' | '/library' | '/review'
+  to:
+    | '/'
+    | '/ask'
+    | '/class'
+    | '/library'
+    | '/review'
+    | '/settings'
+    | '/vocabulary'
+    | '/library/$bookId'
+  id:
+    | '__root__'
+    | '/'
+    | '/ask'
+    | '/class'
+    | '/library'
+    | '/review'
+    | '/settings'
+    | '/vocabulary'
+    | '/library_/$bookId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AskRoute: typeof AskRoute
+  ClassRoute: typeof ClassRoute
   LibraryRoute: typeof LibraryRoute
   ReviewRoute: typeof ReviewRoute
+  SettingsRoute: typeof SettingsRoute
+  VocabularyRoute: typeof VocabularyRoute
+  LibraryBookIdRoute: typeof LibraryBookIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +141,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ask': {
+      id: '/ask'
+      path: '/ask'
+      fullPath: '/ask'
+      preLoaderRoute: typeof AskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/class': {
+      id: '/class'
+      path: '/class'
+      fullPath: '/class'
+      preLoaderRoute: typeof ClassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/library': {
@@ -82,13 +171,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vocabulary': {
+      id: '/vocabulary'
+      path: '/vocabulary'
+      fullPath: '/vocabulary'
+      preLoaderRoute: typeof VocabularyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library_/$bookId': {
+      id: '/library_/$bookId'
+      path: '/library/$bookId'
+      fullPath: '/library/$bookId'
+      preLoaderRoute: typeof LibraryBookIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AskRoute: AskRoute,
+  ClassRoute: ClassRoute,
   LibraryRoute: LibraryRoute,
   ReviewRoute: ReviewRoute,
+  SettingsRoute: SettingsRoute,
+  VocabularyRoute: VocabularyRoute,
+  LibraryBookIdRoute: LibraryBookIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
