@@ -46,7 +46,7 @@ function Dashboard() {
           <p className="kicker mt-6 text-muted-foreground">Pages this week</p>
           <div className="mt-3 flex h-28 items-end gap-2">
             {week.map((w, i) => (
-              <div key={i} className="flex flex-1 flex-col items-center gap-1">
+              <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-1">
                 <div className={`w-full rounded-sm border border-border ${i === 3 ? "bg-highlight" : "bg-muted"}`} style={{ height: `${(w.n / max) * 100}%` }} />
                 <span className="kicker">{w.d}</span>
               </div>
