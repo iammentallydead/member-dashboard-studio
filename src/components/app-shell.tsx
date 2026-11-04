@@ -16,7 +16,7 @@ const nav = [
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen md:grid md:grid-cols-[15rem_1fr]">
-      <a href="#main" className="kicker sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:bg-highlight focus:p-2">
+      <a href="#main" className="kicker sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:bg-highlight focus:p-2 focus:text-highlight-foreground">
         Skip to content
       </a>
       <aside className="border-b border-border bg-paper-2 md:sticky md:top-0 md:h-screen md:border-b-0 md:border-r">
@@ -30,7 +30,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               key={to}
               to={to}
               activeOptions={{ exact }}
-              className="kicker flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-sm px-3 text-foreground hover:bg-muted"
+              className="kicker flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-sm px-3 hover:bg-muted"
               activeProps={{ className: "bg-highlight text-highlight-foreground" }}
             >
               <Icon className="size-4" /> {label}
