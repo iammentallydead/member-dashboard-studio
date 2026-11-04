@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell, PageTitle } from "@/components/app-shell";
 import { books } from "@/lib/sample-data";
 
@@ -32,7 +32,7 @@ function Library() {
               const pct = Math.round((b.page / b.pages) * 100);
               return (
                 <tr key={b.id} className="border-b border-rule last:border-0 hover:bg-muted">
-                  <td className="p-4"><p className="font-display text-xl">{b.title}</p><p className="text-sm text-muted-foreground">{b.author}</p></td>
+                  <td className="p-4"><Link to="/library/$bookId" params={{ bookId: b.id }} className="font-display text-xl underline-offset-4 hover:underline">{b.title}</Link><p className="text-sm text-muted-foreground">{b.author}</p></td>
                   <td className="p-4 font-mono text-sm">{pct === 100 ? <span className="marker">Finished</span> : `${pct}%`}</td>
                   <td className="p-4 font-mono text-sm">{b.words}</td>
                   <td className="p-4 font-mono text-sm">{b.quotes}</td>

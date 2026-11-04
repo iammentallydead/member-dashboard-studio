@@ -1,11 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { BookOpen, Flame, LayoutGrid, Repeat, Search } from "lucide-react";
+import { BookOpen, Flame, LayoutGrid, MessageSquare, Repeat, Search, Settings, Type, Users } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Today", icon: LayoutGrid },
-  { to: "/review", label: "Review", icon: Repeat },
-  { to: "/library", label: "Library", icon: BookOpen },
+  { to: "/", label: "Today", icon: LayoutGrid, exact: true },
+  { to: "/library", label: "Library", icon: BookOpen, exact: false },
+  { to: "/review", label: "Review", icon: Repeat, exact: true },
+  { to: "/vocabulary", label: "Vocabulary", icon: Type, exact: true },
+  { to: "/ask", label: "Ask your library", icon: MessageSquare, exact: true },
+  { to: "/class", label: "Class", icon: Users, exact: true },
+  { to: "/settings", label: "Settings", icon: Settings, exact: true },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -20,12 +24,12 @@ export function AppShell({ children }: { children: ReactNode }) {
           <p className="kicker mt-1 hidden text-muted-foreground md:block">Reading notebook</p>
         </div>
         <nav className="flex gap-1 overflow-x-auto px-3 pb-3 md:flex-col md:pb-0">
-          {nav.map(({ to, label, icon: Icon }) => (
+          {nav.map(({ to, label, icon: Icon, exact }) => (
             <Link
               key={to}
               to={to}
-              activeOptions={{ exact: true }}
-              className="kicker flex min-h-11 items-center gap-3 rounded-sm px-3 text-foreground hover:bg-muted"
+              activeOptions={{ exact }}
+              className="kicker flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-sm px-3 text-foreground hover:bg-muted"
               activeProps={{ className: "bg-highlight text-highlight-foreground" }}
             >
               <Icon className="size-4" /> {label}
